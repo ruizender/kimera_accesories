@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_10_05_001048) do
+=======
+ActiveRecord::Schema.define(version: 2021_10_05_004333) do
+>>>>>>> development
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +25,18 @@ ActiveRecord::Schema.define(version: 2021_10_05_001048) do
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< HEAD
+=======
+  create_table "orders", force: :cascade do |t|
+    t.integer "total"
+    t.bigint "user_id"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+>>>>>>> development
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "sku"
@@ -33,6 +49,19 @@ ActiveRecord::Schema.define(version: 2021_10_05_001048) do
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
+<<<<<<< HEAD
+=======
+  create_table "shopping_carts", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "product_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_shopping_carts_on_order_id"
+    t.index ["product_id"], name: "index_shopping_carts_on_product_id"
+  end
+
+>>>>>>> development
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -50,5 +79,12 @@ ActiveRecord::Schema.define(version: 2021_10_05_001048) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+<<<<<<< HEAD
   add_foreign_key "products", "categories"
+=======
+  add_foreign_key "orders", "users"
+  add_foreign_key "products", "categories"
+  add_foreign_key "shopping_carts", "orders"
+  add_foreign_key "shopping_carts", "products"
+>>>>>>> development
 end
