@@ -9,11 +9,11 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
+ *= stub "active_admin"
  *= require_tree .
  *= require_self
  */
- body {
+body {
   font-family: 'Roboto', sans-serif;
 
 }
@@ -24,7 +24,7 @@
   background: linear-gradient(to bottom, #8E54E9, #4776E6); 
 }
 
-.btn {
+.btn2 {
   background: #4776E6;  
   background: -webkit-linear-gradient(to bottom, #8E54E9, #4776E6);
   background: linear-gradient(to bottom, #8E54E9, #4776E6);

@@ -4,23 +4,60 @@
     <span class="navbar-toggler-icon"></span>
   </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link btn btn-dark mx-2'" href="<%= root_path %>">Products <span class="sr-only">(current)</span></a>
-            </li>
-              <% if user_signed_in? %>
-              <li class="nav-item">
-                <%= link_to 'Cerrar Sesion', destroy_user_session_path, method: :delete , class:'btn btn-light ' %>
-              </li>
-              <% else %>
-              <li class="nav-item">
-                <%= link_to 'Registrate Aqui', new_user_registration_path, class:'btn btn-light mx-2' %>
-              </li>
-              <li class="nav-item">
-                <%= link_to 'Inicia Sesion', new_user_session_path, class:'btn btn-light'  %>
-              </li>
-              <% end %>
-          </ul>
 
+      <div class="dropdown show">
+    <a class="btn btn-outline-success my-2 my-sm-0 dropdown-toggle mx-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Categorias
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" href="#">Pulseras</a>
+      <a class="dropdown-item" href="#">Collares</a>
+      <a class="dropdown-item" href="#">Zarcillos</a>
+    </div>
+  </div>
+
+  <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Buscar Productos" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+
+      <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+
+        <li class="nav-item">
+          <%= link_to (root_path) do %>
+            <i class="fas fa-shopping-cart text-light fa-2x mx-2"></i>
+          <% end %>
+        </li>
+
+        <li class="nav-item">
+          <% if user_signed_in? %>
+            <%= link_to (edit_user_registration_path) do %>
+            <i class="fas fa-user-edit text-light fa-2x"></i>
+            <% end %>
+        </li>
+
+
+        <li class="nav-item mx-2">
+          <%= link_to (destroy_user_session_path), method: :delete do %>
+        <i class="fas fa-sign-out-alt text-light fa-2x"></i>
+        <% end %>
+        </li>
+  
+        <% else %>
+
+        <li class="nav-item">   
+          <%= link_to 'Registrate Aqui', new_user_registration_path, class:'btn btn-warning mx-2' %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to 'Inicia Sesion', new_user_session_path, class:'btn btn-light mx-2'  %>
+        </li>
+
+          <% end %>
+      </ul>
   </div>
 </nav>
+
+
