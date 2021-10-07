@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="<%= root_path %>">Kimera Accessories</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link btn btn-dark mx-2'" href="<%= root_path %>">Products <span class="sr-only">(current)</span></a>
+            </li>
+              <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to 'Cerrar Sesion', destroy_user_session_path, method: :delete , class:'btn btn-light ' %>
+              </li>
+              <% else %>
+              <li class="nav-item">
+                <%= link_to 'Registrate Aqui', new_user_registration_path, class:'btn btn-light mx-2' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Inicia Sesion', new_user_session_path, class:'btn btn-light'  %>
+              </li>
+              <% end %>
+          </ul>
+
+  </div>
+</nav>

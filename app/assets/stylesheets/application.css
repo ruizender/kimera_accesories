@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+ body {
+  font-family: 'Roboto', sans-serif;
+
+}
+
+.navbar  {
+  background: #4776E6; 
+  background: -webkit-linear-gradient(to bottom, #8E54E9, #4776E6); 
+  background: linear-gradient(to bottom, #8E54E9, #4776E6); 
+}
+
+.btn {
+  background: #4776E6;  
+  background: -webkit-linear-gradient(to bottom, #8E54E9, #4776E6);
+  background: linear-gradient(to bottom, #8E54E9, #4776E6);
+
+}
