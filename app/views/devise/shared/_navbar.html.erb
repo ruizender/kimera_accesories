@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="<%= root_path %>">Kimera Accessories</a>
+  <a class="navbar-brand" href="<%= root_path %>"> <%= image_tag("logo_kimera.png", style: 'height:10%; width:30%') %> </a> 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -11,16 +11,17 @@
     </a>
 
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <a class="dropdown-item" href="#">Pulseras</a>
-      <a class="dropdown-item" href="#">Collares</a>
-      <a class="dropdown-item" href="#">Zarcillos</a>
+
+      <%= link_to 'Pulseras', categories_path, class:' dropdown-item' %>
+      <%= link_to 'Collares', categories_path, class:' dropdown-item' %>
+      <%= link_to 'Pucas', categories_path, class:' dropdown-item' %>    
     </div>
   </div>
 
-  <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Buscar Productos" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-    </form>
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar Productos" aria-label="Search">
+        <i class="fas fa-search text-light fa-2x mx-2"  type="submit" ></i>
+      </form>
 
       <ul class="navbar-nav ml-auto">
           <li class="nav-item">
