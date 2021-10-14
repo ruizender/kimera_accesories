@@ -1,19 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Order:</strong>
-  <%= @shopping_cart.order %>
-</p>
-
-<p>
-  <strong>Product:</strong>
-  <%= @shopping_cart.product %>
-</p>
-
-<p>
-  <strong>Quantity:</strong>
-  <%= @shopping_cart.quantity %>
-</p>
-
-<%= link_to 'Edit', edit_shopping_cart_path(@shopping_cart) %> |
-<%= link_to 'Back', shopping_carts_path %>
+<div class="card">
+  <div class="card-header bg-dark text-light">
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+    <a href="<%= root_url%>" class="btn btn-outline-info btn-sm pull-right">Continue Shopping</a>
+    <div class="clearfix">
+    </div> 
+    </div>
+      <div class="card-body">
+        <% @order.shopping_carts.includes(:product).each do |item| %>
+        <div class="row">
+        <div class="col-xs-2 col-md-2">
+      <img class="img-responsive" src="http://placehold.it/120x80" alt="prewiew">
+      </div>
+    <div class="col-xs-4 col-md-6">
+      <h4 class="product-name"><strong><%= item.product.name %></strong></h4><h4><small>
+      <%= item.product.descriptions %></small></h4>x
+    </div>
+        <div class="col-xs-6 col-md-4 row">
+          <div class="col-xs-6 col-md-6 text-right" style="padding-top: 5px">
+          <h6><strong><%= item.price%> <span class="text-muted">x</span></strong></h6>
+        </div>
+            <div class="col-xs-4 col-md-4">
+          <%= item.quantity %> 
+            </div>
+          <div class="col-xs-2 col-md-2">
+          </div> 
+        </div>
+      </div>
+        <hr> <% end %>
+      </div>
+      <div class="card-footer">
+        <a href="#" class="btn btn-success pull-right">Pagar</a> <div class="pull-right" style="margin: 5px">
+        Total: $<b><%= @order.total %></b> 
+    </div>
+  </div> 
+</div>

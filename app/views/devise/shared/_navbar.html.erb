@@ -26,12 +26,14 @@
       <ul class="navbar-nav ml-auto">
           <li class="nav-item">
 
-        <li class="nav-item">
-          <%= link_to (root_path) do %>
-            <i class="fas fa-shopping-cart text-light fa-2x mx-2"></i>
-          <% end %>
-        </li>
-
+        <% if current_user %>
+          <li class="nav-item">
+            <%= link_to (shopping_cart_path(@order)) do %>
+              <i class="fas fa-shopping-cart text-light fa-2x mx-2"></i>
+            <% end %>
+          </li>
+        <% end %>
+        
         <li class="nav-item">
           <% if user_signed_in? %>
             <%= link_to (edit_user_registration_path) do %>
