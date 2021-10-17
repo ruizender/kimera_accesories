@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="<%= root_path %>"> <%= image_tag("logo_kimera.png", style: 'height:10%; width:30%') %> </a> 
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -14,10 +15,10 @@
       <%= link_to 'Pucas', categories_path, class:' dropdown-item' %>    
     </div>
   </div>
-    <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Buscar Productos" aria-label="Search">
-        <i class="fas fa-search text-light fa-2x mx-2"  type="submit" ></i>
-      </form>
+    <% if current_user && current_user.admin == true  %>
+    <%= link_to 'Nuevo Producto', new_product_path, class:'btn btn-outline-success btn-light mx-2' %>
+    <%= link_to 'Nueva Categoria', new_category_path, class:'btn btn-outline-success btn-light mx-2' %>
+    <% end  %>
       <ul class="navbar-nav ml-auto">
         <% if current_user %>
             <li class="nav-item">

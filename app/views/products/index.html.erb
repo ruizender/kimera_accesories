@@ -2,6 +2,16 @@
 
 <h1>Products</h1>
 
+
+<%= search_form_for @q do |f|%>
+<div  class="form-inline my-2 my-lg-0"%>
+  <%= f.search_field :name_or_descriptions_cont, placeholder: 'Buscar Productos', class:"form-control mr-sm-2" %>
+  <%= f.submit "Buscar", class:"btn btn-outline-success mx-2 my-2" %> 
+  <%= link_to "Mostrar todos", root_path, class:'btn btn-outline-success text-light'%>
+  </div>
+<% end %>
+
+
 <div class="row">
   <div class="col-md-8 offset-2">
     <div class="container">
@@ -12,12 +22,6 @@
             <img class="card-img-top"
               src="<%= product.photo%>" alt=""/>
               <% end %>
-
-
-
-
-
-
             <div class="card-block">
               <h5 class="card-title"><%= product.name %></h5> 
                 <div class="card-text">
@@ -42,6 +46,11 @@
           </div>
         </div> 
       </div>
-<% if current_user && current_user.admin == true  %>
-<%= link_to 'New Product', new_product_path, class:'btn btn-light mx-2' %>
-<% end  %>
+
+
+
+<div class="row ">
+    <div class="col-md-8 offset-md-2 mx-2 my-5 ">
+      <%= paginate @products, class:'btn btn-light mx-2'  %>
+    </div>
+</div>

@@ -6,10 +6,15 @@ class ProductsController < ApplicationController
   
   # GET /products or /products.json
   def index 
-    @products = Product.all
+    #@products = Product.all
     if current_user
       @order = Order.find_by(user_id: current_user.id)
     end
+
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true)
+
+    @products = Kaminari.paginate_array(@products).page(params[:page]).per(5)
   end
 
   # GET /products/1 or /products/1.json
@@ -24,6 +29,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    @categories = Category.all
   end
 
   # POST /products or /products.json
@@ -63,6 +69,7 @@ class ProductsController < ApplicationController
     end
   end
 
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -71,6 +78,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :sku, :descriptions, :photo, :stok, :category_id)
+      params.require(:product).permit(:name, :sku, :descriptions, :photo, :stock, :category_id)
     end
 end

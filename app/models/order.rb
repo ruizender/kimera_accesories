@@ -6,9 +6,14 @@ class Order < ApplicationRecord
 
   def add_product(product_id, quantity) 
     product = Product.find(product_id) 
-    if product && product.stok > 0
+    if product && product.stock > 0
       shopping_carts.create(product_id: product.id, quantity: quantity)
     end 
+  end
+
+
+  def total_products
+    totales = Shopping_cart
   end
 end
 
