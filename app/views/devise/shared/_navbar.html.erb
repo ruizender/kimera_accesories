@@ -4,63 +4,47 @@
     <span class="navbar-toggler-icon"></span>
   </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-
       <div class="dropdown show">
     <a class="btn btn-outline-success my-2 my-sm-0 dropdown-toggle mx-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Categorias
     </a>
-
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-
       <%= link_to 'Pulseras', categories_path, class:' dropdown-item' %>
       <%= link_to 'Collares', categories_path, class:' dropdown-item' %>
       <%= link_to 'Pucas', categories_path, class:' dropdown-item' %>    
     </div>
   </div>
-
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Buscar Productos" aria-label="Search">
         <i class="fas fa-search text-light fa-2x mx-2"  type="submit" ></i>
       </form>
-
       <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-
         <% if current_user %>
-          <li class="nav-item">
-            <%= link_to (shopping_cart_path(@order)) do %>
-              <i class="fas fa-shopping-cart text-light fa-2x mx-2"></i>
-            <% end %>
-          </li>
-        <% end %>
-        
-        <li class="nav-item">
-          <% if user_signed_in? %>
-            <%= link_to (edit_user_registration_path) do %>
-            <i class="fas fa-user-edit text-light fa-2x"></i>
-            <% end %>
-        </li>
-
-
+            <li class="nav-item">
+              <% if @order.present?  %>
+                  <%= link_to (shopping_cart_path(@order)) do %>
+                      <i class="fas fa-shopping-cart text-light fa-2x mx-2"></i>
+                    <% end %>
+              <% end %>    
+            </li>
+            <li class="nav-item">
+                <%= link_to (edit_user_registration_path) do %>
+                  <i class="fas fa-user-edit text-light fa-2x"></i>
+                <% end %>
+            </li>
         <li class="nav-item mx-2">
           <%= link_to (destroy_user_session_path), method: :delete do %>
         <i class="fas fa-sign-out-alt text-light fa-2x"></i>
         <% end %>
         </li>
-  
-        <% else %>
-
+      <% else  %>
         <li class="nav-item">   
           <%= link_to 'Registrate Aqui', new_user_registration_path, class:'btn btn-warning mx-2' %>
         </li>
-
         <li class="nav-item">
           <%= link_to 'Inicia Sesion', new_user_session_path, class:'btn btn-light mx-2'  %>
         </li>
-
           <% end %>
       </ul>
   </div>
 </nav>
-
-

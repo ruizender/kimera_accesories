@@ -4,6 +4,9 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 p, ol, ul, td {

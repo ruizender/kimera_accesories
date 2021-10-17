@@ -16,8 +16,8 @@
 </p>
 
 <p>
-  <strong>Photo:</strong>
-  <%= @product.photo %>
+  <img class="img-fluid"
+  src="<%= @product.photo%>" alt="" />
 </p>
 
 <p>
@@ -31,7 +31,7 @@
 </p>
 
 <p>
-Quality  : <%= rating_for @product, 'Quality', star: 10 %>
+Price  : <%= rating_for @product, 'price', star: 5 %>
 </p>
 
 
