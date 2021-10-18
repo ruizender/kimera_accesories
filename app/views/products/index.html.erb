@@ -21,14 +21,15 @@
             <%= link_to (product_path(product)) do %>
             <img class="card-img-top"
               src="<%= product.photo%>" alt=""/>
-              <% end %>
             <div class="card-block">
               <h5 class="card-title"><%= product.name %></h5> 
                 <div class="card-text">
                 <div class="badge badge-primary">
                 <%= product.category.name %></div>
-                <div>$<%= product.price %></div> 
+              <% end %>
+                <div>$<%= product.price %></div>
                 </div>
+                  <%= product.descriptions %>
                     <div class="row float-right"> 
                       <div class="col-md-12">
                           <%= form_for :shopping_cart, url: shopping_cart_path(product), method: :put do |f| %>
