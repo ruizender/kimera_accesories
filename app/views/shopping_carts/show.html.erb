@@ -11,19 +11,24 @@
         <% @order.shopping_carts.includes(:product).each do |item| %>
           <div class="row">
             <div class="col-xs-2 col-md-2">
+            <%= link_to (product_path(item.product)) do %>
               <img class="img-responsive" src="<%= item.product.photo%>" alt="prewiew">
+              <% end %>
               </div>
                 <div class="col-xs-4 col-md-6">
                   <h4 class="product-name"><strong><%= item.product.name %></strong></h4><h4><small>
-                  <%= item.product.descriptions %></small></h4>x
+                  <%= item.product.descriptions %></small></h4>
                   </div>
-                    <div class="col-xs-6 col-md-4 row">
-                      <div class="col-xs-6 col-md-6 text-right" style="padding-top: 5px">
-                      <h6><strong><%= item.price%> <span class="text-muted">x</span></strong></h6>
-                    </div>
-                        <div class="col-xs-4 col-md-4">
-                      <%= item.quantity %> 
-                      <%= link_to "borrar", shopping_cart_path(item), method: :delete, data: { confirm: '¿Estas seguro?' }%>
+                      <div class="col-xs-6 col-md-4 row">
+                        <div class="col-xs-6 col-md-6 text-right" style="padding-top: 5px">
+                        <h3>$<strong><%= item.product.price%> 
+                        <span class="text-muted h2">x</span></strong></h6>
+                      </div>
+                        <div class="col-xs-4 col-md-4 h3">
+                      <%= item.quantity %>
+                      <%= link_to shopping_cart_path(item), method: :delete, data: { confirm: '¿Estas seguro?' } do %>
+                      <i class="fas fa-trash-alt"></i> 
+                      <% end %>
                         </div>
                       <div class="col-xs-2 col-md-2">
                   </div> 

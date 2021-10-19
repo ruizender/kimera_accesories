@@ -10,12 +10,12 @@
   <%= @product.sku %>
 </p>
 
-<p>
+  <p>
   <strong>Descriptions:</strong>
-  <%= @product.descriptions %>
-</p>
+  <%= @product.descriptions %><span id="dots">...</span><span id="more"></span></p>
+    <button onclick="myFunction()" id="myBtn">Read more</button> 
+  <p>
 
-<p>
   <img class="img-fluid"
   src="<%= @product.photo%>" alt="" />
 </p>
@@ -47,7 +47,7 @@ Price  : <%= rating_for @product, 'price', star: 5 %>
   <%= link_to root_path do %> |
     <i class="fas fa-arrow-circle-left fa-2x"></i>
       <% end %> |
-  <%= link_to @product, method: :delete, data: { confirm: 'Are you sure?' } do %>
+  <%= link_to @product, method: :delete, data: { confirm: '¿Estas seguro?' } do %>
     <i class="fas fa-trash-alt fa-2x"></i>
       <% end %>
 <% end %>

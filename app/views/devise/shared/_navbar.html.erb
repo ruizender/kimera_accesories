@@ -1,12 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="<%= root_path %>"> <%= image_tag("logo_kimera.png", style: 'height:10%; width:30%') %> </a> 
-
+  <div class="mx-2">
+    <a class="navbar-brand cuadro" href="<%= root_path %>"> 
+      <%= image_tag("logo_kimera.png", class:'logo') %> 
+    </a> 
+  </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <div class="dropdown show">
-    <a class="btn btn-outline-success my-2 my-sm-0 dropdown-toggle mx-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <div class="dropdown show ml-4">
+    <a class="btn btn-outline-success my-2 my-sm-0 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Categorias
     </a>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -17,7 +20,7 @@
   </div>
     <% if current_user && current_user.admin == true  %>
     <%= link_to 'Nuevo Producto', new_product_path, class:'btn btn-outline-success btn-light mx-2' %>
-    <%= link_to 'Nueva Categoria', new_category_path, class:'btn btn-outline-success btn-light mx-2' %>
+    <%= link_to 'Nueva Categoria', new_category_path, class:'btn btn-outline-success btn-light' %>
     <% end  %>
       <ul class="navbar-nav ml-auto">
         <% if current_user %>

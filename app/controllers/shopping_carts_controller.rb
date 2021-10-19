@@ -1,6 +1,6 @@
 class ShoppingCartsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_product , only: %i[destroy]
+  before_action :find_cart , only: %i[destroy]
 
   def update
     product = params[:shopping_cart][:product_id]
@@ -12,7 +12,7 @@ class ShoppingCartsController < ApplicationController
   def show
     @order = current_order
   end
-
+  
   def destroy
     @cart.destroy
     respond_to do |format|
@@ -24,7 +24,7 @@ class ShoppingCartsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     
-    def find_product
+    def find_cart
       @cart = ShoppingCart.find(params[:id])
     end
 end

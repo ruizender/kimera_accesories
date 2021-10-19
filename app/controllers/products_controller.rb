@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   
   # GET /products or /products.json
   def index 
-    #@products = Product.all
+    @products = Product.all.order(:created_at => :asc)
     if current_user
       @order = Order.find_by(user_id: current_user.id)
     end
@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
     @q = Product.ransack(params[:q])
     @products = @q.result(distinct: true)
 
-    @products = Kaminari.paginate_array(@products).page(params[:page]).per(5)
+    @products = Kaminari.paginate_array(@products).page(params[:page]).per(6)
   end
 
   # GET /products/1 or /products/1.json
