@@ -36,9 +36,9 @@
         </div>
     </div>
         <hr> <% end %>
-      </div>
+    </div>
       <div class="card-footer">
-        <a href="#" class="btn btn-success pull-right">Pagar</a> <div class="pull-right" style="margin: 5px">
-        Total: $<b><%= @order.total %></b> 
-  </div> 
-</div>
+        <div class="pull-right" style="margin: 5px">Total: $<%= @order.total%> 
+          <a href="#" class="btn btn-success pull-right">Pagar</a> 
+        </div> 
+    </div>
