@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   root to: "products#index"
   devise_for :users, controllers: {
     sessions: 'users/sessions',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
   resources :products
   resources :categories
