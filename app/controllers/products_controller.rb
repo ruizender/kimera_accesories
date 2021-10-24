@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!
   before_action :set_product, only: %i[ show edit update destroy ]
   before_action :crud_to_admin, only: %i[ new create edit update destroy ]
 
