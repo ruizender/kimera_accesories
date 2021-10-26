@@ -25,11 +25,9 @@
         <ul class="navbar-nav ml-auto">
           <% if current_user %>
               <li class="nav-item">
-                <% if @order.present?  %>
                       <%= link_to (shopping_cart_path(@order)) do %>
                           <i class="fas fa-shopping-cart text-secundary fa-2x mx-2"></i>
                             <% end %>
-                <% end %>
               </li>
               <li class="nav-item"><%= link_to (edit_user_registration_path) do %>
                   <i class="fas fa-user-edit text-secundary fa-2x"></i>
