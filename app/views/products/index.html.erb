@@ -1,6 +1,6 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<h1>Productos</h1>
+<p id="notice" class="h2 mt-5"><%= notice %></p>
 
 <%= search_form_for @q do |f|%>
     <div  class="form-inline my-2 my-lg-0"%>
@@ -34,4 +34,5 @@
 
 <div class="col-md-8 offset-md-2 mx-2 my-5 ">
     <%= paginate @products, class:'btn btn-danger mx-2'  %>
+</div>
 </div>
