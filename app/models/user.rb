@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable,
           :omniauthable, omniauth_providers: %i[github google_oauth2 facebook]
-  validates :name, :lastname, :address, :rut, :phone, presence: true
+  
   ratyrate_rater
 
   def self.from_omniauth(auth)
