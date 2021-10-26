@@ -26,9 +26,9 @@
           <% if current_user %>
               <li class="nav-item">
                 <% if @order.present?  %>
-                    <%= link_to (shopping_cart_path(@order)) do %>
-                        <i class="fas fa-shopping-cart text-secundary fa-2x mx-2"></i>
-                          <% end %>
+                      <%= link_to (shopping_cart_path(@order)) do %>
+                          <i class="fas fa-shopping-cart text-secundary fa-2x mx-2"></i>
+                            <% end %>
                 <% end %>
               </li>
               <li class="nav-item"><%= link_to (edit_user_registration_path) do %>
@@ -42,8 +42,8 @@
                     <li class="nav-item"><%= link_to 'Registrate Aqui', new_user_registration_path, class:'btn btn-warning mx-2' %></li>
                     <li class="nav-item"><%= link_to 'Inicia Sesion', new_user_session_path, class:'btn btn-light mx-2'  %></li>
 
-                    <li><%= link_to "Inicia sesion con Google", user_google_oauth2_omniauth_authorize_path,  class:'btn btn-light mx-2' %></li>
-                    <li><%# link_to "Inicia sesion con Facebook", user_facebook_omniauth_authorize_path,  class:'btn btn-light mx-2' %></li>
+                    <li><%= link_to "Continua con Google", user_google_oauth2_omniauth_authorize_path,  class:'btn btn-light mx-2' %></li>
+                    <li><%= link_to "Continua con Facebook", user_facebook_omniauth_authorize_path,  class:'btn btn-light mx-2' %></li>
 
                   <% end %>
         </ul>

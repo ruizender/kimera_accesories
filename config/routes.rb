@@ -10,9 +10,16 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+  resource :shopping_cart, only: [:show, :update, :destroy] do 
+    member do
+      post :pay_with_paypal
+      get :process_paypal_payment 
+      end
+    end
+
   resources :products
   resources :categories
   resources :orders
-  resources :shopping_carts, only: [:show, :update, :destroy]
+
   
 end
