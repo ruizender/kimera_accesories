@@ -17,7 +17,7 @@
               <li><a href="#two">¿Quienes somos?</a></li>
               <li><a href="#work">Categorias</a></li>
               <li><a href="#contact">Contáctanos</a></li>
-              <% if current_user.admin = true %>
+              <% if current_user.admin == true %>
               <li><%= link_to 'Ordenes', orders_path%></li>
               <% end  %>
               <li><%= link_to 'Productos', products_path%><li>
