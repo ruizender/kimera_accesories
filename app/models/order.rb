@@ -5,11 +5,19 @@ class Order < ApplicationRecord
   has_many :payments
 
 
-  
+  def to_s
+    email  
+  end
+
   def add_product(product_id, quantity) 
-    product = Product.find(product_id) 
-    if product && product.stock > 0
-      shopping_carts.create(product_id: product.id, quantity: quantity, price: product.price)
+    product = Product.find(product_id)
+    bag = self.shopping_carts.find_by_product_id(product.id)
+    if product && (product.stock > 0)
+      if bag.nil?
+        shopping_carts.create(product_id: product.id, quantity: quantity, price: product.price )
+      else
+        bag.update_attribute(:quantity, bag.quantity + 1)
+      end
       total_amount
     end 
   end
@@ -18,7 +26,7 @@ class Order < ApplicationRecord
   def total_amount
     subtotal = 0
     self.shopping_carts.map do |product|
-      subtotal += product.price.to_i
+      subtotal += product.price * product.quantity
     end
     update_attribute(:total, subtotal)
   end

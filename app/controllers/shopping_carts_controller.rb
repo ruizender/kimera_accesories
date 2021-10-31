@@ -7,7 +7,7 @@ class ShoppingCartsController < ApplicationController
     product = params[:shopping_cart][:product_id]
     quantity = params[:shopping_cart][:quantity]
     current_order.add_product(product, quantity)
-    redirect_to root_path, notice: "Producto Agregado con éxito!"
+    redirect_to shopping_cart_path, notice: "Producto Agregado con éxito!"
   end
   
   def show
@@ -16,6 +16,7 @@ class ShoppingCartsController < ApplicationController
 
   
   def destroy
+    @cart.order.total = @cart.new_total_order
     @cart.destroy
     respond_to do |format|
       format.html { redirect_to shopping_cart_url, notice: "Se borro tu producto del carrito." }

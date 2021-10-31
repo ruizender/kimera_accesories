@@ -2,3 +2,7 @@
 # yarn lockfile v1
 
 
+highcharts@^9.3.0:
+  version "9.3.0"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-9.3.0.tgz#999496c8af677d5f08e41e2e708d3eb7baf56640"
+  integrity sha512-nQ7yW5ni7wFiPgDN2IWrS6o6NjL1gK/OhZjrdpyB3FQuefMkTQngygP+JqZFMx7PDrP3YAvfejx0M5IgkC01ow==

@@ -5,6 +5,8 @@ class OrdersController < ApplicationController
   # GET /orders or /orders.json
   def index
     @orders = Order.all
+    @pie = Order.group(:total).count 
+    @sales_group_by_month = Order.group_by_month(:created_at, format: "%b %Y").sum(:total)
   end
 
   # GET /orders/1 or /orders/1.json

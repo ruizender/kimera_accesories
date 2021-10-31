@@ -1,6 +1,5 @@
 <div class="container">
   <h2 class="text-center mt-4">Inicia Sesion</h2>
-
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
       <%= f.label :email %><br />
@@ -12,6 +11,12 @@
       <%= f.password_field :password, autocomplete: "current-password" %>
     </div>
 
+      <% if flash[:notice] %>
+                <p class="alert font-weight-bold text-danger"><%= flash[:notice] %></p>
+      <% end %>
+      <% if flash[:alert] %>
+                <p class="alert font-weight-bold text-danger"><%= flash[:alert] %></p>
+      <% end %>
     <% if devise_mapping.rememberable? %>
       <div class="field">
         <%= f.check_box :remember_me %>

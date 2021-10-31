@@ -1,6 +1,4 @@
 <div class="container">
-
-
     <%= search_form_for @q do |f|%>
         <div class="ml-auto">
             <% if current_user && current_user.admin == true  %>
@@ -14,30 +12,26 @@
             <%= link_to "Mostrar todos", root_path, class:' form-control btn btn-outline-success text-success'%>
         </div>
     <% end %>
-
-    <div class="card-deck container-fluid py-2 mx-auto">
-        <div class="row">
+    <div class="row">
+        <div class="card-deck">
             <% @products.each do |product| %>
-                <div class="card">
-                    <%= link_to (product_path(product)) do %>
-                    <%= image_tag product.photo, class:"imagen-logo" %>
-                    <% end %>
-                    <div class="card-body">
+                <div class="col-4">
+                    <div class="card  container-fluid">
+                        <%= link_to (product_path(product)) do %>
+                        <%= image_tag product.photo, class:"imagen-logo" %>
+                        <% end %>
                         <h5 class="card-title h3 text-dark"><%= product.name %></h5>
-                            <%= form_for :shopping_cart, url: shopping_cart_path(product), method: :put do |f| %>
-                            <%= f.hidden_field :product_id, value: product.id %>
-                            <%= f.hidden_field :quantity, value: 1 %>
-                            <span>Calificación : <%= rating_for product, 'price', star: 5 %></span>
-                        </div>
-                        <p class="card-text h4 text-danger text-center">$<%= product.price %></p>
-                            <%= f.submit "Agregar al carrito", class:"btn btn-primary btn-sm mx-2 my-2"%>
-                        </div>
+                        <%= form_for :shopping_cart, url: shopping_cart_path(product), method: :put do |f| %>
+                        <%= f.hidden_field :product_id, value: product.id %>
+                        <%= f.hidden_field :quantity, value: 1 %>
+                        <span>Calificación : <%= rating_for product, 'price', star: 5 %></span>
+                        <p class="card-text h4 text-danger">$<%= product.price %></p>
+                        <%= f.submit "Agregar al carrito", class:"btn btn-primary btn-sm mx-2 my-2"%>
+                    </div>
+                </div>
                 <% end %>
             <% end %>
         </div>
     </div>
-
-    <div class="col-md-8 offset-md-2 mx-2 my-5 ">
         <%= paginate @products %>
-    </div>
 </div>

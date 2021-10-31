@@ -13,6 +13,8 @@ gem 'activeadmin'
 gem 'activemerchant'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem "chartkick"
+gem 'groupdate'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 gem 'omniauth-facebook'

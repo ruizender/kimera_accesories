@@ -1,19 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <strong>Total:</strong>
-  <%= @order.total %>
-</p>
+  <p id="notice"><%= notice %></p>
+<div class="card">
+  <p>
+    <strong>User:</strong>
+    <%= @order.user.name %>
+    <%= @order.user.lastname %>,
+  </p>
+  <p>
+    <strong>Dirección:</strong>
+    <%= @order.user.address %>
+  </p>
+  <p>
+    <strong>Total:</strong>
+    <%= @order.total %>
+  </p>
+  <p>
+    <strong>Status:</strong>
+    <%= @order.status %>
+  </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @order.user %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @order.status %>
-</p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+</div>
+  <%= link_to 'Edit', edit_order_path(@order) %>
+  <%= link_to 'Back', orders_path %>
+  </div>

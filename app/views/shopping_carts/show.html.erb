@@ -1,3 +1,4 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <div class="card">
@@ -7,36 +8,73 @@
       <div class="clearfix">
     </div> 
     </div>
-      <div class="card-body">
-        <% @order.shopping_carts.includes(:product).each do |item| %>
-          <div class="row">
-            <div class="col-xs-2 col-md-2">
-            <%= link_to (product_path(item.product)) do %>
-              <img class="img-responsive" src="<%= item.product.photo%>" alt="prewiew">
-              <% end %>
-              </div>
-                <div class="col-xs-4 col-md-6">
-                    <h4 class="product-name"><strong><%= item.product.name %></strong></h4>
-                    <h4><small><%= item.product.descriptions %></small></h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Foto</th>
+      <th scope="col">Nombre</th>
+
+      <th scope="col">Precio Unitario</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Subtotal</th>
+    </tr>
+  </thead>
+
+<tbody>
+      
+    <% @order.shopping_carts.includes(:product).each do |item| %>
+          
+<tr>
+    <td>          
+                <%= link_to (product_path(item.product)) do %>
+                  <img class="img-responsive" src="<%= item.product.photo%>" alt="prewiew">
+                  <% end %>
+            
+    </td>
+
+
+    <td>  
+
+                        <h4 class="product-name"><strong><%= item.product.name %></strong></h4>
+
+    </td>  
+
+    <td>   
+
+                          <h3>$<strong><%= item.product.price%> 
+
+                  
+    </td>
+              <td>
+                            <%= item.quantity %>
+                        </td>
+
+          <td>      
+                      <%= item.quantity * item.price %>
+            </td>
+
+
+
+          <td>      
+          
+                            <%= link_to shopping_cart_path(item), method: :delete, data: { confirm: '¿Estas seguro?' } do %>
+                              <i class="fas fa-trash-alt"></i> 
+                            <% end %>
+                        </div>
+                    
+            </td>
+          
+                    </div> 
                 </div>
-                <div class="col-xs-6 col-md-4 row">
-                    <div class="col-xs-6 col-md-6 text-right" style="padding-top: 5px">
-                      <h3>$<strong><%= item.product.price%> 
-                      <span class="text-muted h2">x</span></strong></h6>
-                    </div>
-                    <div class="col-xs-4 col-md-4 h3">
-                        <%= item.quantity %>
-                        <%= link_to shopping_cart_path(item), method: :delete, data: { confirm: '¿Estas seguro?' } do %>
-                          <i class="fas fa-trash-alt"></i> 
-                        <% end %>
-                    </div>
-                      <div class="col-xs-2 col-md-2">
-                </div> 
             </div>
         </div>
-    </div>
-        <hr> <% end %>
-    </div>
+            <hr> <% end %>
+        </div>
+          <tr>
+      </tbody>
+    </table>
+
       <div class="card-footer">
         <div class="pull-right" style="margin: 5px">Total: $<%= @order.total%> 
           <%= form_for :shopping_cart, url: pay_with_paypal_shopping_cart_path, method: :post do |f|%>

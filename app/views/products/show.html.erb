@@ -14,8 +14,7 @@
 
   <p>
   <strong>Descriptions:</strong>
-  <%= @product.descriptions %><span id="dots">...</span><span id="more"></span></p>
-    <button onclick="myFunction()" id="myBtn">Read more</button> 
+  <%= @product.descriptions %> 
   <p>
 
   <img class="img-fluid"
@@ -39,7 +38,7 @@
 
 
 <p>
-Price  : <%= rating_for @product, 'price', star: 5 %>
+Calidad  : <%= rating_for @product, 'price', star: 5 %>
 </p>
 
 <% if current_user && current_user.admin == true %>
