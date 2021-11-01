@@ -45,7 +45,7 @@ Calidad  : <%= rating_for @product, 'price', star: 5 %>
   <%= link_to edit_product_path(@product) do %> 
     <i class="fas fa-edit fa-2x"></i>
       <% end %>
-  <%= link_to root_path do %> |
+  <%= link_to products_path do %> |
     <i class="fas fa-arrow-circle-left fa-2x"></i>
       <% end %> |
   <%= link_to @product, method: :delete, data: { confirm: '¿Estas seguro?' } do %>

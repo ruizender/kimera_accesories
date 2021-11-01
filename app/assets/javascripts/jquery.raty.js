@@ -745,7 +745,7 @@
     scoreName    : 'score',
     single       : false,
     space        : true,
-    starHalf     : 'star-on.png',
+    starHalf     : 'star-half.png',
     starOff      : 'star-off.png',
     starOn       : 'star-on.png',
     starType     : 'img',
