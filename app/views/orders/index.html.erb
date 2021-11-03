@@ -1,9 +1,11 @@
+<h2 class="text-center mt-4">Ordenes</h2>
 <div class="container">  <p id="notice"><%= notice %></p>
   <h1>Graficos</h1>
+  <h1>Ventas agrupadas tipo torta</h1>
   <%= pie_chart @pie %>
+  <h1>Ventas agrupadas por mes</h1>
   <%= column_chart @sales_group_by_month %>
   <br>
-  <h1>Orders</h1>
   <table class="table">
     <thead class="font-weight-bold">
       <tr>

@@ -10,24 +10,25 @@
         <div  class="form-inline my-2 my-lg-0"%>
             <%= f.search_field :name_or_descriptions_cont, placeholder: 'Buscar Productos', class:"form-control mr-sm-2" %>
             <%= f.submit "Buscar", class:"btn btn-outline-success mx-2 my-2" %> 
-            <%= link_to "Mostrar todos", root_path, class:' form-control btn btn-outline-success text-success'%>
+            <%= link_to "Mostrar todos", products_path, class:' form-control btn btn-outline-success text-success'%>
         </div>
     <% end %>
 
     <div class="row">
-            <div class="card-deck container-fluid py-2 mx-auto">
+            <div class="card-deck container-fluid border-solid py-2 mx-auto">
             <% @products.each do |product| %>
                 <div class="col-4">
                     <div class="card">
-                        <%= link_to (product_path(product)) do %>
-                            <%= image_tag product.photo, class:"imagen-logo" %>
-                        <% end %>
-                        <h5 class="card-title h3 text-dark"><%= product.name %></h5>
+                            <%= link_to product_path(product, disposition: "attachment") do%>
+                                <%= image_tag product.pictures.last.variant(resize: "250x250"), class:"img-responsive" %>
+                            <% end  %>
+                            <h1 class="card-title"><%= product.name %></h1>
+                            <span>Categoria: <%= product.category %></span>
                             <%= form_for :shopping_cart, url: shopping_cart_path(product), method: :put do |f| %>
                             <%= f.hidden_field :product_id, value: product.id %>
                             <%= f.hidden_field :quantity, value: 1 %>
                             <span>Calificación : <%= rating_for product, 'price', star: 5 %></span>
-                            <p class="card-text h4 text-danger">$<%= product.price %></p>
+                            <p class="card-text h4 text-danger">Precio $<%= product.price %></p>
                             <%= f.submit "Agregar al carrito", class:"btn btn-primary btn-sm mx-2 my-2"%>
                     </div>
                 </div>

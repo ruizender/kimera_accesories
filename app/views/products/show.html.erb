@@ -15,16 +15,21 @@
   <p>
   <strong>Descriptions:</strong>
   <%= @product.descriptions %> 
-  <p>
+  </p>
+  
 
-  <img class="img-fluid"
-  src="<%= @product.photo%>" alt="" />
+<p>
+<strong>Pictures:</strong>
+<% @product.pictures.each do |x| %>
+<%= image_tag x.variant(resize: "250x250") %>
+<% end  %>
 </p>
 
 <p>
   <strong>Stock:</strong>
   <%= @product.stock %>
 </p>
+
 
 <p>
   <strong>Category:</strong>
@@ -40,6 +45,7 @@
 <p>
 Calidad  : <%= rating_for @product, 'price', star: 5 %>
 </p>
+
 
 <% if current_user && current_user.admin == true %>
   <%= link_to edit_product_path(@product) do %> 

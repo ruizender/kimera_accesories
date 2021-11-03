@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
   before_action :crud_to_admin, only: %i[ new create edit update destroy ]
-
+  
   
   # GET /products or /products.json
   def index 
@@ -34,6 +34,8 @@ class ProductsController < ApplicationController
   # POST /products or /products.json
   def create
     @product = Product.new(product_params)
+
+    params.require(:product).permit(:name, :descriptions, :stock, images: [])
 
     respond_to do |format|
       if @product.save
@@ -77,6 +79,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :sku, :descriptions, :photo, :stock, :category_id, :price)
+      params.require(:product).permit(:name, :sku, :descriptions, :stock, :photo, :category_id, :price, pictures: [])
     end
 end

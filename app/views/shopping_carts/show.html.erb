@@ -1,86 +1,57 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-<div class="card">
-  <div class="card-header text-light">
-      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-      <a href="<%= products_path%>" class="btn btn-outline-info btn-sm pull-right">Continua Comprando</a>
-      <div class="clearfix">
-    </div> 
-    </div>
+  <div class="card">
+    <div class="card-header text-light">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        <a href="<%= products_path%>" class="btn btn-outline-info btn-sm pull-right">Continua Comprando</a>
+        <div class="clearfix">
+      </div> 
+  </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Foto</th>
-      <th scope="col">Nombre</th>
-
-      <th scope="col">Precio Unitario</th>
-      <th scope="col">Cantidad</th>
-      <th scope="col">Subtotal</th>
-    </tr>
-  </thead>
-
-<tbody>
-      
-    <% @order.shopping_carts.includes(:product).each do |item| %>
-          
-<tr>
-    <td>          
-                <%= link_to (product_path(item.product)) do %>
-                  <img class="img-responsive" src="<%= item.product.photo%>" alt="prewiew">
-                  <% end %>
-            
-    </td>
-
-
-    <td>  
-
-                        <h4 class="product-name"><strong><%= item.product.name %></strong></h4>
-
-    </td>  
-
-    <td>   
-
-                          <h3>$<strong><%= item.product.price%> 
-
-                  
-    </td>
-              <td>
-                            <%= item.quantity %>
-                        </td>
-
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Foto</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Precio Unitario</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>   
+      <% @order.shopping_carts.includes(:product).each do |item| %>      
+        <tr>
+          <td> 
+            <%= image_tag item.product.pictures.last.variant(resize: "80x80"), class:"img-responsive" %>
+          </td>
+          <td>  
+            <h4 class="product-name"><strong><%= item.product.name %></strong></h4>
+          </td>  
+          <td>   
+          $<%= item.product.price%>
+          </td>
+          <td>
+            <%= item.quantity %>
+          </td>
           <td>      
-                      <%= item.quantity * item.price %>
-            </td>
-
-
-
-          <td>      
-          
-                            <%= link_to shopping_cart_path(item), method: :delete, data: { confirm: '¿Estas seguro?' } do %>
-                              <i class="fas fa-trash-alt"></i> 
-                            <% end %>
-                        </div>
-                    
-            </td>
-          
-                    </div> 
-                </div>
-            </div>
-        </div>
-            <hr> <% end %>
-        </div>
-          <tr>
+            $<%= item.quantity * item.price %>
+          </td>
+          <td>          
+            <%= link_to shopping_cart_path(item), method: :delete, data: { confirm: '¿Estas seguro?' } do %>
+            <i class="fas fa-trash-alt"></i> 
+            <% end %>
+          </td>
+            <% end %>
       </tbody>
-    </table>
-
+  </table>
       <div class="card-footer">
         <div class="pull-right" style="margin: 5px">Total: $<%= @order.total%> 
           <%= form_for :shopping_cart, url: pay_with_paypal_shopping_cart_path, method: :post do |f|%>
             <%= f.hidden_field :order_id, value: @order.id %>
             <%= f.submit 'Pagar' %>
-          <% end  %>
+          <% end %>
         </div> 
-    </div>
+      </div> 
+</div>
 
