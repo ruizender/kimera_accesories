@@ -9,8 +9,8 @@ local:
 #Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 amazon:
   service: S3
-  access_key_id: "AKIARSDEXX53Q2NDAX5N"
-  secret_access_key: "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"
+  access_key_id: <%= Figaro.env.aws_access_key_id %>
+  secret_access_key: <%= Figaro.env.aws_secret_key_id %>
   region: sa-east-1
   bucket: kimeraaccesories
 
