@@ -19,9 +19,11 @@
             <% @products.each do |product| %>
                 <div class="col-4">
                     <div class="card">
+                    <article class="from-left">
                             <%= link_to product_path(product, disposition: "attachment") do%>
                                 <%= image_tag product.pictures.last.variant(resize: "250x250"), class:"img-responsive" %>
                             <% end  %>
+                            </article>
                             <h1 class="card-title"><%= product.name %></h1>
                             <span>Categoria: <%= product.category %></span>
                             <%= form_for :shopping_cart, url: shopping_cart_path(product), method: :put do |f| %>

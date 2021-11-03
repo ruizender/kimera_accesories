@@ -18,10 +18,10 @@
   </p>
   
 
-<p>
 <strong>Pictures:</strong>
-<% @product.pictures.each do |x| %>
-<%= image_tag x.variant(resize: "250x250") %>
+<p>
+<% @product.pictures.each do |picture| %>
+<%= image_tag picture.variant(resize: "700x700") %>
 <% end  %>
 </p>
 
