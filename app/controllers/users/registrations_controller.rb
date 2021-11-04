@@ -8,9 +8,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    UserNotifierMailer.send_signup_email(@user).deliver
+  end
+
+  private
+  
 
   # GET /resource/edit
   # def edit

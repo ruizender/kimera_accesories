@@ -11,6 +11,4 @@ class ApplicationController < ActionController::Base
       order = Order.find_or_create_by(user_id: current_user.id, status: "process")
     end
   end
-
-  
 end

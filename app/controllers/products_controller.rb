@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
   # POST /products or /products.json
   def create
     @product = Product.new(product_params)
-
+    @categories = Category.all
     params.require(:product).permit(:name, :descriptions, :stock, images: [])
 
     respond_to do |format|

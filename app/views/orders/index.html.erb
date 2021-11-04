@@ -10,6 +10,7 @@
     <thead class="font-weight-bold">
       <tr>
         <th>ID</th>
+        <th>Fecha</th>
         <th>Nombre</th>
         <th>Apellido</th>
         <th>Dirección</th>
@@ -22,6 +23,7 @@
       <% @orders.each do |order| %>
         <tr>
           <td><%= order.id %></td>
+          <td><%= order.created_at %></td>
           <td><%= order.user.name %></td>
           <td><%= order.user.lastname %></td>  
           <td><%= order.user.address %></td>        
