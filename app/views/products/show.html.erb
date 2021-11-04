@@ -1,65 +1,46 @@
 <div class="container">
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-
-<p>
-  <strong>Sku:</strong>
-  <%= @product.sku %>
-</p>
-
-  <p>
-  <strong>Descriptions:</strong>
-  <%= @product.descriptions %> 
-  </p>
-  
-
-<strong>Pictures:</strong>
-<p>
-<% @product.pictures.each do |picture| %>
-<%= image_tag picture.variant(resize: "700x700") %>
-<% end  %>
-</p>
-
-<p>
-  <strong>Stock:</strong>
-  <%= @product.stock %>
-</p>
-
-
-<p>
-  <strong>Category:</strong>
-  <%= @product.category %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-
-<p>
-Calidad  : <%= rating_for @product, 'price', star: 5 %>
-</p>
-
-
-<% if current_user && current_user.admin == true %>
-  <%= link_to edit_product_path(@product) do %> 
-    <i class="fas fa-edit fa-2x"></i>
-      <% end %>
-  <%= link_to products_path do %> |
-    <i class="fas fa-arrow-circle-left fa-2x"></i>
-      <% end %> |
-  <%= link_to @product, method: :delete, data: { confirm: '¿Estas seguro?' } do %>
-    <i class="fas fa-trash-alt fa-2x"></i>
-      <% end %>
-<% end %>
-
+  <p id="notice"><%= notice %></p>
+  <div class="media border border-success mb-4">
+      <% @product.pictures.each do |picture| %>
+        <%= image_tag picture.variant(resize: "600x600"), class:"align-self-center mx-4 border border-success" %>
+      <% end  %>
+      <div class="media-body">
+        <h2 class="mt-0"><%= @product.name %></h2>
+          <strong> SKU:</strong>
+            <p><%= @product.sku %></p>
+          <strong>Descripción:</strong>
+            <p><%= @product.descriptions %> </p>
+          <strong>Stock:</strong>
+            <p>Quedan <%= @product.stock %> Unid.</p>
+          <strong>Categoria:</strong>
+            <p><%= @product.category %></p>
+          <strong>Precio:</strong>
+            <p><%= @product.price %></p>
+            <p>Calidad  : <%= rating_for @product, 'price', star: 5 %> </p>
+            <% if current_user && current_user.admin == true %>
+              <%= link_to edit_product_path(@product) do %> 
+                <i class="fas fa-edit fa-2x"></i>
+                  <% end %>
+              <%= link_to products_path do %>  
+                <i class="fas fa-arrow-circle-left fa-2x"></i>
+                  <% end %>  
+              <%= link_to @product, method: :delete, data: { confirm: '¿Estas seguro?' } do %>
+                <i class="fas fa-trash-alt fa-2x"></i>
+                  <% end %>
+        </div>
+        <% end %>
+    </div>
 </div>
+
+
+
+
+
+
+
+
+
+
 
 
 

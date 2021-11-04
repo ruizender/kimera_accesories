@@ -16,17 +16,6 @@
 
 #more {display: none;}
 
-.imagen-logo{
-  display: inline-block;
-  box-sizing: border-box;
-  vertical-align: middle;
-  max-height: 100%;
-  max-width: 100%;
-  height: 6rem;
-  width: 6rem;
-  padding-top: 2px;
-  padding-bottom: 2px; 
-}
 .logo {
   display: inline-block;
   box-sizing: border-box;
@@ -41,6 +30,14 @@
   padding: 0 ;
   margin: 0;
   box-sizing: border-box;
+}
+
+
+.photocard{
+  display: inline-block;
+  vertical-align: middle;
+  width: 286px;
+  height: 220px;
 }
 
 .image-footer{

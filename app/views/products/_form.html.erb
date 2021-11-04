@@ -14,7 +14,7 @@
     <% end %>
 
     <div class="field">
-      <%= form.label :name %>
+      <%= form.label :Nombre %>
       <%= form.text_field :name %>
     </div>
 
@@ -24,28 +24,28 @@
     </div>
 
     <div class="field">
-      <%= form.label :descriptions %>
+      <%= form.label :Descripción %>
       <%= form.text_area :descriptions %>
     </div>
 
 
     <div class="field">
-      <%= form.label :pictures %>
+      <%= form.label :Fotos %>
       <%= form.file_field :pictures, multiple: true %>
     </div>
 
     <div class="field">
-      <%= form.label :stock %>
+      <%= form.label :Stock %>
       <%= form.number_field :stock %>
     </div>
 
     <div class="field">
-      <%= form.label :Price %>
+      <%= form.label :Precio %>
       <%= form.number_field :price %>
     </div>
 
     <div class="field">
-      <%= form.label :category_id %>
+      <%= form.label :Categoria %>
         <%= form.collection_select :category_id, @categories, :id, :name %> 
     </div>
 
