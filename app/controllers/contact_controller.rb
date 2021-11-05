@@ -18,8 +18,8 @@ class ContactController < ApplicationController
   def contact_client(name, email, message)
     from = SendGrid::Email.new(email: 'kimera.acces@gmail.com')
     to = SendGrid::Email.new(email: 'kimera.acces@gmail.com')
-    subject = "Consulta de Cliente #{name} responder a #{email}"
-    content = SendGrid::Content.new(type: 'text/plain', value: message)
+    subject = "Consulta de Cliente #{name}"
+    content = SendGrid::Content.new(type: 'text/plain', value: "#{message}. Responder correo a #{email}")
     mail = SendGrid::Mail.new(from, subject, to, content)
     sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
     response = sg.client.mail._('send').post(request_body: mail.to_json)

@@ -19,7 +19,7 @@
             <% @products.each do |product| %>
                 <div class="col-4 my-2">
                     <div class="card" style="width: 18rem;">
-                            <%= link_to product_path(product, disposition: "attachment") do%>
+                            <%= link_to product_path(product) do%>
                                 <%= image_tag product.pictures.last.variant(resize: "250x250"), class:"card-img-top photocard" %>
                             <% end  %>
                             <h1 class="card-title text-center"><%= product.name %></h1>
