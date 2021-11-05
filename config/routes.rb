@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'contact/new'
+  post 'contact/create'
   get 'home/index'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -23,6 +25,7 @@ Rails.application.routes.draw do
   resources :products
   resources :categories
   post '/rate' => 'rater#create', :as => 'rate'
-  
+  post '/' => "home#create", :as => 'home_create'
+
   
 end

@@ -13,10 +13,11 @@
               <li><a href="#one">¿Quienes somos?</a></li>
               <li><a href="#two">Nueva Colección</a></li>
               <li><a href="#work">Categorias</a></li>
+             <li> <%= link_to "contactanos", (contact_new_path) %> </li>
               <li><a href="#contact">Contáctanos</a></li>
-              <% if current_user && current_user.admin == true %>
+            
               <li><%= link_to 'Ordenes', orders_path%></li>
-              <% end  %>
+        
               <li><%= link_to 'Productos', products_path%><li>
                 <% if current_user %>
               <li class="nav-item">

@@ -4,9 +4,13 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
-    @orders = Order.all
+    if current_user.admin == true
+    @orders = Order.all.order(created_at: :desc)
     @pie = Order.group(:total).count 
     @sales_group_by_month = Order.group_by_month(:created_at, format: "%b %Y").sum(:total)
+    else
+    @orders = Order.where(user_id: current_user.id).order(created_at: :desc)
+    end
   end
 
   # GET /orders/1 or /orders/1.json

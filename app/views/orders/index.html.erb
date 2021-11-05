@@ -1,11 +1,13 @@
 <h2 class="text-center mt-4">Ordenes</h2>
 <div class="container">  <p id="notice"><%= notice %></p>
+<% if current_user.admin == true %>
   <h1>Graficos</h1>
   <h1>Ventas agrupadas tipo torta</h1>
   <%= pie_chart @pie %>
   <h1>Ventas agrupadas por mes</h1>
   <%= column_chart @sales_group_by_month %>
   <br>
+  <% end  %>
   <table class="table">
     <thead class="font-weight-bold">
       <tr>
@@ -14,8 +16,8 @@
         <th>Nombre</th>
         <th>Apellido</th>
         <th>Dirección</th>
-        <th>Status</th>
         <th>Total</th>
+        <th>Status</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -23,15 +25,17 @@
       <% @orders.each do |order| %>
         <tr>
           <td><%= order.id %></td>
-          <td><%= order.created_at %></td>
+          <td><%= order.created_at.strftime('%d-%m-%Y') %></td>
           <td><%= order.user.name %></td>
           <td><%= order.user.lastname %></td>  
           <td><%= order.user.address %></td>        
-          <td><%= order.status %></td>
           <td><%= order.total %></td>
+          <td><%= order.status %></td>
           <td><%= link_to 'Show', order %></td>
+          <% if current_user.admin == true %>
           <td><%= link_to 'Edit', edit_order_path(order) %></td>
           <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end  %>
         </tr>
       <% end %>
     </tbody>

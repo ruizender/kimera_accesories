@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   
   # GET /products or /products.json
   def index 
-    @products = Product.all.order(:created_at => :asc)
+    @products = Product.all.order(created_at: :asc)
     if current_user
       @order = Order.find_by(user_id: current_user.id)
     end
