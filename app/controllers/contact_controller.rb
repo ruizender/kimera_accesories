@@ -10,6 +10,7 @@ class ContactController < ApplicationController
     email = params[:email]
     message = params[:message]
     contact_client(name, email, message)
+    redirect_to root_path, notice: "Correo enviado con éxito, te responderemos en un plazo no mayor a 48 hrs"
   end
 
 

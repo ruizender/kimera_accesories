@@ -27,6 +27,7 @@
     <div class="actions">
       <%= f.submit "Log in" %>
     </div>
+      <%= link_to "Continua con Google", user_google_oauth2_omniauth_authorize_path,  class:'btn btn-outline-success mt-2 text-decoration-none' %>
       <%= link_to "Iniciar sesión como Administrador" , admin_root_path, class: "btn btn-outline-success mt-2 text-decoration-none" %>
     <br>
   <% end %>
