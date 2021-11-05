@@ -1,16 +1,13 @@
 <header id="header">
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="mx-2">
-    
         <a class="navbar-brand cuadro" href="<%= root_path %>"> 
           <%= image_tag("logo_kimera.png", class:'logo') %> 
         </a> 
-      </div>
-      
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-        
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
             <ul>
               <li><a href="#intro">Intro</a></li>
               <li><a href="#one">¿Quienes somos?</a></li>
@@ -21,17 +18,13 @@
               <li><%= link_to 'Ordenes', orders_path%></li>
               <% end  %>
               <li><%= link_to 'Productos', products_path%><li>
-            </ul>		
-        
-          <ul class="navbar-nav ml-auto">
-            <% if current_user %>
-                <li class="nav-item">
+                <% if current_user %>
+              <li class="nav-item">
                   <% if @order.present?  %>
                         <%= link_to (shopping_cart_path(@order)) do %>
                             <i class="fas fa-shopping-cart text-secundary fa-2x mx-2"></i>
                               <% end %>
-                  <% end %>
-                </li>
+                  <% end %></li>
                 <li class="nav-item"><%= link_to (edit_user_registration_path) do %>
                     <i class="fas fa-user-edit text-secundary fa-2x"></i>
                   <% end %></li>
@@ -40,12 +33,13 @@
                     <i class="fas fa-sign-out-alt text-secundary fa-2x"></i>
                     <% end %></li>
                   <% else  %>
-                      <li class="nav-item"><%= link_to 'Registrate Aqui', new_user_registration_path, class:'btn btn-warning mx-2' %></li>
-                      <li class="nav-item"><%= link_to 'Inicia Sesion', new_user_session_path, class:'btn btn-light mx-2'  %></li>
+                  <li class="nav-item"><%= link_to 'Registrate Aqui', new_user_registration_path, class:'btn btn-warning mx-2' %></li>
+                  <li class="nav-item"><%= link_to 'Inicia Sesion', new_user_session_path, class:'btn btn-light mx-2'  %></li>
 
-                      <li><%= link_to "Continua con Google", user_google_oauth2_omniauth_authorize_path,  class:'btn btn-light mx-2' %></li>
+                  <li><%= link_to "Continua con Google", user_google_oauth2_omniauth_authorize_path,  class:'btn btn-light mx-2' %></li>
                     <% end %>
-          </ul>
-    </div>
+              </ul>
+            </div>
+          </div>
   </nav>
 </header>
