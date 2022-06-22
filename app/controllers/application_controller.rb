@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def current_order
     if current_user
-      order = Order.find_or_create_by(user_id: current_user.id, status: "process")
+      order = Order.find_or_create_by(user_id: current_user.id, status: 'process')
     end
   end
 end

@@ -7,7 +7,7 @@ class ShoppingCartsController < ApplicationController
     product = params[:shopping_cart][:product_id]
     quantity = params[:shopping_cart][:quantity]
     current_order.add_product(product, quantity)
-    redirect_to shopping_cart_path, notice: "Producto Agregado con éxito!"
+    redirect_to shopping_cart_path, notice: 'Producto Agregado con éxito!'
   end
   
   def show
@@ -19,7 +19,7 @@ class ShoppingCartsController < ApplicationController
     @cart.order.total = @cart.new_total_order
     @cart.destroy
     respond_to do |format|
-      format.html { redirect_to shopping_cart_url, notice: "Se borro tu producto del carrito." }
+      format.html { redirect_to shopping_cart_url, notice: 'Se borro tu producto del carrito.' }
       format.json { head :no_content }
     end
   end
@@ -35,11 +35,11 @@ class ShoppingCartsController < ApplicationController
     cancel_return_url: root_url,
     
     allow_guest_checkout: true,
-    currency: "USD" )
-    payment_method = PaymentMethod.find_by(code: "PEC")
+    currency: 'USD' )
+    payment_method = PaymentMethod.find_by(code: 'PEC')
 
     Payment.create(
-    order_id: order.id, payment_method_id: payment_method.id, status: "processing",
+    order_id: order.id, payment_method_id: payment_method.id, status: 'processing',
     total: order.total,
     token: response.token
     )
@@ -52,9 +52,9 @@ class ShoppingCartsController < ApplicationController
     {
       ip: request.remote_ip, token: params[:token], 
       payer_id: details.payer_id, 
-      currency: "USD"
+      currency: 'USD'
         }
-    price = details.params["order_total"].to_d
+    price = details.params['order_total'].to_d
     response = EXPRESS_GATEWAY.purchase(price, express_purchase_options) 
       if response.success?
         payment = Payment.find_by(token: response.token) 

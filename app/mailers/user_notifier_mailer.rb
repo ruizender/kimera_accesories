@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserNotifierMailer < ApplicationMailer
   default :from => 'kimera.acces@gmail.com'
 
