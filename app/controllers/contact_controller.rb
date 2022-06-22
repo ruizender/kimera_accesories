@@ -10,7 +10,7 @@ class ContactController < ApplicationController
     email = params[:email]
     message = params[:message]
     contact_client(name, email, message)
-    redirect_to root_path, notice: "Correo enviado con éxito, te responderemos en un plazo no mayor a 48 hrs"
+    redirect_to root_path, notice: 'Correo enviado con éxito, te responderemos en un plazo no mayor a 48 hrs'
   end
 
 
@@ -23,7 +23,6 @@ class ContactController < ApplicationController
     mail = SendGrid::Mail.new(from, subject, to, content)
     sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
     response = sg.client.mail._('send').post(request_body: mail.to_json)
-    puts "***#{response.inspect}"
     puts response.status_code
     puts response.body
     puts response.headers
