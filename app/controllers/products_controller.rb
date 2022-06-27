@@ -35,7 +35,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @categories = Category.all
-    params.require(:product).permit(:name, :descriptions, :stock, images: [])
+    params.require(:product).permit(:name, :description, :stock, images: [])
 
     respond_to do |format|
       if @product.save
@@ -79,6 +79,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :sku, :descriptions, :stock, :photo, :category_id, :price, pictures: [])
+      params.require(:product).permit(:name, :sku, :description, :stock, :photo, :category_id, :price, pictures: [])
     end
 end
