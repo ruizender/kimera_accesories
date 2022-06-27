@@ -2,6 +2,7 @@ class ContactController < ApplicationController
   require 'sendgrid-ruby'
   include SendGrid
   skip_before_action :verify_authenticity_token
+
   def new
   end
 
@@ -12,8 +13,6 @@ class ContactController < ApplicationController
     contact_client(name, email, message)
     redirect_to root_path, notice: 'Correo enviado con éxito, te responderemos en un plazo no mayor a 48 hrs'
   end
-
-
 
   def contact_client(name, email, message)
     from = SendGrid::Email.new(email: 'kimera.acces@gmail.com')
