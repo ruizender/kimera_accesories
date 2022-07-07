@@ -16,15 +16,14 @@ user = User.create!(
 category = Category.create!(
     name: "Categoria de prueba"
 )
-
-9.times do |i|
-    Product.create!(
-        name: 'Producto #{i}',
-        sku: 'SKUAEM#{i}',
-        price: i * 1000,
-        description: 'Esta es la descripción del producto #{i}',
-        photo: "image_seed.webp",
-        stock: 1,
-        category_id: category.id
-    )
-end
+# 10.times do |i|
+#     Product.create!(
+#         name: 'Producto #{i}',
+#         sku: 'SKUAEM#{i}',
+#         price: Random.rand(20000),
+#         description: 'Esta es la descripción del producto #{i}',
+#         photo: file,
+#         stock: 1,
+#         category_id: category.id
+#     )
+# end
